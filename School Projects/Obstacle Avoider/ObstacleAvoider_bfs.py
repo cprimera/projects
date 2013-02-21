@@ -1,4 +1,11 @@
 #!/usr/local/bin/python 
+
+####################################################################
+# Created by Christopher Primerano on 05-03-2012.                  #
+# Copyright (c) 2012 Christopher Primerano. All rights reserved.   #
+#                                                                  #
+####################################################################
+
 from PIL import Image, ImageDraw
 import random
 import math

@@ -1,3 +1,9 @@
+####################################################################
+# Created by Christopher Primerano on 21-02-2012.                  #
+# Copyright (c) 2012 Christopher Primerano. All rights reserved.   #
+#                                                                  #
+####################################################################
+
 from player import Player
 import random
 import time
@@ -23,11 +29,9 @@ class AI(Player):
         self._prev_was_hit = hit
         
     def next_direction(self):
-        print "next direction"
         self._prev_shot = self._last
         self._direction += 1
         if self._direction >= 4:
-            print "Start over"
             self._prev_was_hit = False
         self._direction %= 4
         
@@ -46,33 +50,29 @@ class AI(Player):
         # either random points (difficulty = 0)
         # or every second point for the board and then the remaining (difficulty = 1)
         if self._difficulty == 0:
+			# if the previous shot was a hit then follow the ship until there is a miss on all 4 sides
             if self._prev_was_hit:
                 if self._direction == 0 and (self._prev_shot[0] + 1, self._prev_shot[1]) in self._moves:
-                    print "did right"
                     self._prev_shot = (self._prev_shot[0] + 1, self._prev_shot[1])
                     self._moves.remove(self._prev_shot)
                     time.sleep(0.3)
                     return self._prev_shot
                 elif self._direction == 1 and (self._prev_shot[0] - 1, self._prev_shot[1]) in self._moves:
-                    print "did left"
                     self._prev_shot = (self._prev_shot[0] - 1, self._prev_shot[1])
                     self._moves.remove(self._prev_shot)
                     time.sleep(0.3)
                     return self._prev_shot
                 elif self._direction == 2 and (self._prev_shot[0], self._prev_shot[1] + 1) in self._moves:
-                    print "did down"
                     self._prev_shot = (self._prev_shot[0], self._prev_shot[1] + 1)
                     self._moves.remove(self._prev_shot)
                     time.sleep(0.3)
                     return self._prev_shot
                 elif self._direction == 3 and (self._prev_shot[0], self._prev_shot[1] - 1) in self._moves:
-                    print "did up"
                     self._prev_shot = (self._prev_shot[0], self._prev_shot[1] - 1)
                     self._moves.remove(self._prev_shot)
                     time.sleep(0.3)
                     return self._prev_shot
                 else:
-                    print "tried someplace"
                     self.next_direction()
                     return self.get_move()
             i = random.randint(0, len(self._moves) - 1)
@@ -90,33 +90,29 @@ class AI(Player):
                 self._last = (0,0)
                 return (0,0)
             else:
+				# if the previous shot was a hit then follow the ship until there is a miss on all 4 sides
                 if self._prev_was_hit:
                     if self._direction == 0 and (self._prev_shot[0] + 1, self._prev_shot[1]) in self._moves:
-                        print "did right"
                         self._prev_shot = (self._prev_shot[0] + 1, self._prev_shot[1])
                         self._moves.remove(self._prev_shot)
                         time.sleep(0.3)
                         return self._prev_shot
                     elif self._direction == 1 and (self._prev_shot[0] - 1, self._prev_shot[1]) in self._moves:
-                        print "did left"
                         self._prev_shot = (self._prev_shot[0] - 1, self._prev_shot[1])
                         self._moves.remove(self._prev_shot)
                         time.sleep(0.3)
                         return self._prev_shot
                     elif self._direction == 2 and (self._prev_shot[0], self._prev_shot[1] + 1) in self._moves:
-                        print "did down"
                         self._prev_shot = (self._prev_shot[0], self._prev_shot[1] + 1)
                         self._moves.remove(self._prev_shot)
                         time.sleep(0.3)
                         return self._prev_shot
                     elif self._direction == 3 and (self._prev_shot[0], self._prev_shot[1] - 1) in self._moves:
-                        print "did up"
                         self._prev_shot = (self._prev_shot[0], self._prev_shot[1] - 1)
                         self._moves.remove(self._prev_shot)
                         time.sleep(0.3)
                         return self._prev_shot
                     else:
-                        print "tried someplace"
                         self.next_direction()
                         return self.get_move()
                 x = (self._last[0] + 2) % self._board.get_size()

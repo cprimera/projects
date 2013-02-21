@@ -1,3 +1,9 @@
+####################################################################
+# Created by Christopher Primerano on 21-02-2012.                  #
+# Copyright (c) 2012 Christopher Primerano. All rights reserved.   #
+#                                                                  #
+####################################################################
+
 from ai import AI
 from user import User
 from board import Board

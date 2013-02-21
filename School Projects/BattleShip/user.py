@@ -1,3 +1,9 @@
+####################################################################
+# Created by Christopher Primerano on 21-02-2012.                  #
+# Copyright (c) 2012 Christopher Primerano. All rights reserved.   #
+#                                                                  #
+####################################################################
+
 from player import Player
 import pygame
 

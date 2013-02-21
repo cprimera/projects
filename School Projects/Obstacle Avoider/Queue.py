@@ -1,3 +1,9 @@
+####################################################################
+# Created by Christopher Primerano on 05-03-2012.                  #
+# Copyright (c) 2012 Christopher Primerano. All rights reserved.   #
+#                                                                  #
+####################################################################
+
 class Queue:
 	
 	def __init__(self):
